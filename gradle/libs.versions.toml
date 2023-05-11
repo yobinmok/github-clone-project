@@ -1,0 +1,97 @@
+[versions]
+# Plugin Version
+kotlin = "1.8.10"
+androidGradlePlugin = "8.0.0"
+minSDK = "24"
+targetSDK = "33"
+versionCode = "1"
+versionName = "1.0.0"
+
+# AndroidX
+core-ktx = "1.10.0"
+activity_ktx = "1.7.0"
+fragment_ktx = "1.5.6"
+appcompat = "1.6.1"
+material = "1.8.0"
+constraintlayout = "2.1.4"
+splashscreen = "1.0.0"
+
+# Test
+junit = "4.13.2"
+junit-ext = "1.1.5"
+core-espresso = "3.5.1"
+
+# Version Catalog Auto Update
+banManes = "0.41.0"
+little-robots = "0.8.0"
+
+# External Libraries
+hilt = "2.44"
+androidxhiltcompiler = "1.0.0"
+navigation = "2.5.3"
+retrofit = "2.9.0"
+moshi_kotlin = "1.13.0"
+moshi_converter = "2.9.0"
+viewmodel = "2.6.0"
+glide = "4.15.1"
+coroutine = "1.6.4"
+lottie = "6.0.0"
+
+[plugins]
+# Project Dependency
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin"}
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin"}
+kotlin-plugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin"}
+banManes = { id = "com.github.ben-manes.versions", version.ref = "banManes" }
+littleRobots = { id = "nl.littlerobots.version-catalog-update", version.ref = "little-robots"}
+hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
+
+[libraries]
+# AndroidX
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+activity-ktx = {group = "androidx.activity", name = "activity-ktx", version.ref = "activity_ktx"}
+fragment-ktx = {group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment_ktx"}
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat"}
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout"}
+test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext"}
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "core-espresso"}
+littleRobots = { group = "nl.littlerobots.vcu", name = "plugin", version.ref = "little-robots"}
+
+kotlin-plugin = {module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin"}
+hilt-plugin = {module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt"}
+splashscreen = {module = "androidx.core:core-splashscreen", version.ref = "splashscreen"}
+
+# Google
+material = { group = "com.google.android.material", name = "material", version.ref = "material"}
+
+# Test
+junit = { group = "junit", name = "junit", version.ref = "junit"}
+
+# External Libraries
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation"}
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation"}
+navigation-safeargs = {module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation"}
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
+moshi-fragment = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi_kotlin"}
+moshi-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "moshi_converter"}
+
+viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "viewmodel"}
+
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
+glidecompiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide"}
+
+coroutine-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine"}
+coroutine-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutine"}
+
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
+androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidxhiltcompiler"}
+
+lottie = {module = "com.airbnb.android:lottie", version.ref = "lottie"}
+[bundles]
+navigation = ["navigation-fragment", "navigation-ui"]
+moshi = ["moshi.converter", "moshi-fragment"]
+coroutine = ["coroutine-android", "coroutine-core"]
+
+
