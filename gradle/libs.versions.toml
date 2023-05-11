@@ -15,6 +15,7 @@ appcompat = "1.6.1"
 material = "1.8.0"
 constraintlayout = "2.1.4"
 splashscreen = "1.0.0"
+room = "2.5.1"
 
 # Test
 junit = "4.13.2"
@@ -57,9 +58,15 @@ test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "core-espresso"}
 littleRobots = { group = "nl.littlerobots.vcu", name = "plugin", version.ref = "little-robots"}
 
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation"}
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation"}
+navigation-safeargs = {module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation"}
+viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "viewmodel"}
 kotlin-plugin = {module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin"}
 hilt-plugin = {module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt"}
 splashscreen = {module = "androidx.core:core-splashscreen", version.ref = "splashscreen"}
+room = {module = "androidx.room:room-runtime", version.ref = "room"}
+room-ktx = {module = "androidx.room:room-ktx", version.ref = "room"}
 
 # Google
 material = { group = "com.google.android.material", name = "material", version.ref = "material"}
@@ -68,15 +75,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 junit = { group = "junit", name = "junit", version.ref = "junit"}
 
 # External Libraries
-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation"}
-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation"}
-navigation-safeargs = {module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation"}
-
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 moshi-fragment = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi_kotlin"}
 moshi-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "moshi_converter"}
-
-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "viewmodel"}
 
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
 glidecompiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide"}

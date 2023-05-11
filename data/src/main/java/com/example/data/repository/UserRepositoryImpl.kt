@@ -1,19 +1,20 @@
-package com.example.data
+package com.example.data.repository
 
 import android.util.Log
 import com.example.data.api.RetrofitService
+import com.example.data.mapperToDomain
 import com.example.data.model.RepositoryEntity
-import com.example.domain.Item
-import com.example.domain.ItemRepository
+import com.example.domain.model.User
+import com.example.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class ItemRepositoryImpl @Inject constructor(private val retrofitService: RetrofitService): ItemRepository {
+class UserRepositoryImpl @Inject constructor(private val retrofitService: RetrofitService):
+    UserRepository {
 
     /*
         - remoteDataSource처럼 아예 api 인터페이스를 구현한 파일
@@ -23,7 +24,7 @@ class ItemRepositoryImpl @Inject constructor(private val retrofitService: Retrof
 
     // ItemEntity를 Item으로 바꿔주는 Mapper 아아아 대박
 
-    override fun getAllItem(): Flow<List<Item>>  = flow{
+    override fun requestAllUser(): Flow<List<User>>  = flow{
         val items = retrofitService.getAllItem().map {
             mapperToDomain(it)
         }
@@ -31,7 +32,7 @@ class ItemRepositoryImpl @Inject constructor(private val retrofitService: Retrof
         emit(items)
     }
 
-    override fun getItem(login: String): Flow<Item> = flow{
+    override fun requestUser(login: String): Flow<User> = flow{
         val item = mapperToDomain(retrofitService.getItem(login))
         Log.d("RepositoryImpl", item.toString())
         getRepository("codingTest")

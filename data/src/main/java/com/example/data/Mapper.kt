@@ -1,14 +1,14 @@
 package com.example.data
 
-import com.example.data.model.ItemEntity
-import com.example.domain.Item
+import com.example.data.model.SearchUserEntity
+import com.example.domain.model.User
 
 // UI(Domain) <-> Data 간의 Model 데이터 변환
 
 // Data -> Domain 모델로 변환
-fun mapperToDomainList(itemEntities: List<ItemEntity>): List<Item>{
+fun mapperToDomainList(itemEntities: List<SearchUserEntity>): List<User>{
     return itemEntities.toList().map {
-        Item(
+        User(
             it.id,
             it.avatarUrl,
             it.login
@@ -16,8 +16,8 @@ fun mapperToDomainList(itemEntities: List<ItemEntity>): List<Item>{
     }
 }
 
-fun mapperToDomain(item: ItemEntity): Item{
-    return Item(item.id, item.avatarUrl, item.login)
+fun mapperToDomain(item: SearchUserEntity): User {
+    return User(item.id, item.avatarUrl, item.login)
 }
 
 // Domain -> Data 모델로 변환

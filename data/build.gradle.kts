@@ -59,4 +59,9 @@ dependencies {
 
     // Moshi
     implementation(libs.bundles.moshi)
+
+    // Room
+    implementation(libs.room)
+    implementation(libs.room.ktx)
+    kapt("androidx.room:room-compiler:2.5.1")
 }

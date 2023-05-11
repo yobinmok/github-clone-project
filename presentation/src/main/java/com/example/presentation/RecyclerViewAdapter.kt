@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.Item
+import com.example.domain.model.User
 import com.example.presentation.databinding.ListItemBinding
 
 class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
-    : ListAdapter<Item, RecyclerViewAdapter.ViewHolder>(DiffUtil){
+    : ListAdapter<User, RecyclerViewAdapter.ViewHolder>(DiffUtil){
 
     class ViewHolder(private var itemBinding: ListItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(itemEntity: Item){
-            itemBinding.item = itemEntity
+        fun bind(userEntity: User){
+            itemBinding.item = userEntity
             itemBinding.executePendingBindings() // 바인딩 데이터 즉각 변경
         }
     }
@@ -32,13 +32,13 @@ class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
     }
 
     companion object{
-        val DiffUtil = object: ItemCallback<Item>(){
-            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-                return oldItem.id == newItem.id
+        val DiffUtil = object: ItemCallback<User>(){
+            override fun areItemsTheSame(oldUser: User, newUser: User): Boolean {
+                return oldUser.id == newUser.id
             }
 
-            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-                return oldItem == newItem
+            override fun areContentsTheSame(oldUser: User, newUser: User): Boolean {
+                return oldUser == newUser
             }
         }
     }

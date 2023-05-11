@@ -1,6 +1,6 @@
 package com.example.domain.usecase
 
-import com.example.domain.ItemRepository
+import com.example.domain.repository.UserRepository
 
-class GetPagingItemUseCase(private val repository: ItemRepository) {
+class GetPagingItemUseCase(private val repository: UserRepository) {
 }

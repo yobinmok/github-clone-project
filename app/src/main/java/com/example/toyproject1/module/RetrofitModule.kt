@@ -34,7 +34,7 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun bindRetrofitService(retrofit: Retrofit): RetrofitService {
+    fun provideRetrofitService(retrofit: Retrofit): RetrofitService {
         return retrofit.create(RetrofitService::class.java)
     }
 

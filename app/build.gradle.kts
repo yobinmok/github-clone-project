@@ -6,7 +6,6 @@ plugins {
     // 아래 플러그인들은 프로젝트 build.gradle plugin에 없음
     id ("androidx.navigation.safeargs.kotlin")
     id ("kotlin-kapt")
-//    id ("kotlin-parcelize")
 }
 kotlin{
     jvmToolchain(17)
@@ -88,4 +87,7 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
+
+    // Room
+    implementation(libs.room.ktx)
 }

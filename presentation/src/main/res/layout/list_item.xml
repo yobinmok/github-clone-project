@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.example.domain.Item" />
+            type="com.example.domain.model.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
