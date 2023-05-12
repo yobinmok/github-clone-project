@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myinfo"
+    app:startDestination="@+id/myinfoFragment">
+    <fragment
+        android:id="@+id/myinfoFragment"
+        android:name="com.example.presentation.views.MyInfoFragment"
+        android:label="My Information"
+        tools:layout="@layout/fragment_myinfo" >
+    </fragment>
+</navigation>

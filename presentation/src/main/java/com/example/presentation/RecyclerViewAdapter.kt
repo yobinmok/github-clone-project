@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.User
-import com.example.presentation.databinding.ListItemBinding
+import com.example.presentation.databinding.UserItemBinding
 
 class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
     : ListAdapter<User, RecyclerViewAdapter.ViewHolder>(DiffUtil){
 
-    class ViewHolder(private var itemBinding: ListItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
+    class ViewHolder(private var itemBinding: UserItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(userEntity: User){
             itemBinding.item = userEntity
             itemBinding.executePendingBindings() // 바인딩 데이터 즉각 변경
@@ -19,7 +19,7 @@ class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = UserItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

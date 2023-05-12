@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@+id/list">
 
-    <fragment
-        android:id="@+id/listFragment"
-        android:name="com.example.presentation.views.ListFragment"
-        android:label="List"
-        tools:layout="@layout/fragment_list" >
-        <action
-            android:id="@+id/action_listFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.presentation.views.DetailFragment"
-        android:label="Detail"
-        tools:layout="@layout/fragment_detail">
-        <argument
-            android:name="login"
-            app:argType="string"/>
-    </fragment>
+    <include app:graph = "@navigation/list"/>
+    <include app:graph = "@navigation/liked"/>
+    <include app:graph = "@navigation/myinfo"/>
+
 </navigation>

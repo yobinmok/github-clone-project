@@ -7,10 +7,23 @@
             name="viewModel"
             type="com.example.presentation.viewModel.UserViewModel" />
     </data>
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.ListFragment">
+        tools:context=".views.ListFragment"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_hint"
+            android:layout_margin="15dp"
+            android:padding="8dp"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="5dp"
+            android:textColor="#757575"
+            android:textSize="15sp"
+            android:background="@drawable/border_search"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -18,5 +31,5 @@
             android:layout_height="match_parent"
             app:listData="@{viewModel.allData}"/>
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>

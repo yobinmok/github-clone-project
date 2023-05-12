@@ -31,8 +31,12 @@ class ListFragment : BaseFragment<FragmentListBinding, UserViewModel>(R.layout.f
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
         }
+        initViewCreated()
     }
     override fun initViewCreated() {
 
+    }
+    private fun requestSearch(){
+        // viewModel 호출
     }
 }
