@@ -1,8 +1,16 @@
 package com.example.data.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+import java.util.Objects
 
-// 통신에 사용되는 모델 (Room을 사용할 경우, Entity 선언해서 Entity로도 사용)
+data class SearchUserListEntity (
+    @Json(name = "total_count")
+    val total_count: String,
+    @Json(name = "items")
+    val items: List<SearchUserEntity>
+)
+
 data class SearchUserEntity (
     @Json(name = "id")
     val id: String,

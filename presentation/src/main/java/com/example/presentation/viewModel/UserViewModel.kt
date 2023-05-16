@@ -1,7 +1,7 @@
 package com.example.presentation.viewModel
 
 import androidx.lifecycle.*
-import com.example.domain.model.User
+import com.example.domain.model.SearchUser
 import com.example.domain.usecase.GetAllUserUseCase
 import com.example.domain.usecase.GetUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,16 +13,17 @@ import javax.inject.Inject
 @HiltViewModel
 class UserViewModel @Inject constructor(private val getAllUserUseCase: GetAllUserUseCase, private val getUserUseCase: GetUserUseCase): ViewModel() {
 
-    private val _allData = MutableStateFlow<List<User>>(listOf())
-    val allData: StateFlow<List<User>> get() = _allData
+    private val _searchUserList = MutableStateFlow<List<SearchUser>>(listOf())
+    val searchUserList: StateFlow<List<SearchUser>> get() = _searchUserList
 
-    private val _userData = MutableStateFlow(User("","",""))
-    val userData: StateFlow<User> get() = _userData
+    // 안사용 -> user(User) 사용
+    private val _searchUserData = MutableStateFlow(SearchUser("","",""))
+    val searchUserData: StateFlow<SearchUser> get() = _searchUserData
 
-    fun requestAllData(){
+    fun requestUserList(username: String){
         viewModelScope.launch{
-            getAllUserUseCase.execute().collect{
-                _allData.value = it
+            getAllUserUseCase.execute(username).collect{
+                _searchUserList.value = it
             }
         }
     }
@@ -30,7 +31,7 @@ class UserViewModel @Inject constructor(private val getAllUserUseCase: GetAllUse
     fun requestData(login: String){
         viewModelScope.launch {
             getUserUseCase.execute(login).collect{
-                _userData.value = it
+                _searchUserData.value = it
             }
         }
     }

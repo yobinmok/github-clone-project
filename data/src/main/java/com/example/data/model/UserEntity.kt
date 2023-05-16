@@ -14,9 +14,11 @@ data class UserEntity (
     @Json(name = "login")
     val login: String,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "followers")
     val followers: String,
     @Json(name = "following")
-    val following: String
+    val following: String,
+    @Json(name="bio")
+    val bio: String?
 )

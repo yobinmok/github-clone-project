@@ -4,11 +4,11 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.domain.model.User
+import com.example.domain.model.SearchUser
 
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<User>?){
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<SearchUser>?){
     val adapter = recyclerView.adapter as RecyclerViewAdapter
     if (data != null) {
         adapter.submitList(data)

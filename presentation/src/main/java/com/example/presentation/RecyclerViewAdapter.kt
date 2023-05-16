@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.model.User
+import com.example.domain.model.SearchUser
 import com.example.presentation.databinding.UserItemBinding
 
 class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
-    : ListAdapter<User, RecyclerViewAdapter.ViewHolder>(DiffUtil){
+    : ListAdapter<SearchUser, RecyclerViewAdapter.ViewHolder>(DiffUtil){
 
     class ViewHolder(private var itemBinding: UserItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(userEntity: User){
-            itemBinding.item = userEntity
+        fun bind(searchUser: SearchUser){
+            itemBinding.item = searchUser
             itemBinding.executePendingBindings() // 바인딩 데이터 즉각 변경
         }
     }
@@ -32,13 +32,13 @@ class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
     }
 
     companion object{
-        val DiffUtil = object: ItemCallback<User>(){
-            override fun areItemsTheSame(oldUser: User, newUser: User): Boolean {
-                return oldUser.id == newUser.id
+        val DiffUtil = object: ItemCallback<SearchUser>(){
+            override fun areItemsTheSame(oldSearchUser: SearchUser, newSearchUser: SearchUser): Boolean {
+                return oldSearchUser.id == newSearchUser.id
             }
 
-            override fun areContentsTheSame(oldUser: User, newUser: User): Boolean {
-                return oldUser == newUser
+            override fun areContentsTheSame(oldSearchUser: SearchUser, newSearchUser: SearchUser): Boolean {
+                return oldSearchUser == newSearchUser
             }
         }
     }

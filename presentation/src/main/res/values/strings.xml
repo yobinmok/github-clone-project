@@ -5,7 +5,9 @@
     <string name="id_label">아이디</string>
     <string name="login_label">로그인</string>
     <string name="my_information_label">My Information</string>
-    <string name="list_label">List</string>
+    <string name="home_label">Home</string>
     <string name="liked_label">Liked</string>
     <string name="search_hint">검색어를 입력하세요.</string>
+    <string name="repository_label">Repository</string>
+    <string name="user_alert_label">혹시 다른 사용자를 찾고 계신가요?</string>
 </resources>

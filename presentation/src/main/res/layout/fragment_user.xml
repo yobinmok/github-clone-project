@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.presentation.viewModel.UserViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="검색어와 정확히 일치하는 사용자입니다."
+
+            android:layout_marginBottom="@dimen/user_gap"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/user_gap"
+            android:background="@drawable/border_list"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/user_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/bottom"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="profile Image" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@+id/user_img"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Mok Yobin"/>
+
+            <TextView
+                android:id="@+id/user_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_star"
+                android:text="yobinmok"
+                app:layout_constraintStart_toEndOf="@+id/user_name"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/user_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:text="Software developer"
+                app:layout_constraintStart_toEndOf="@+id/user_img"
+                app:layout_constraintTop_toBottomOf="@+id/user_name"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/user_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_alert_label"
+
+            android:layout_marginBottom="@dimen/user_gap"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="검색어와 일치하는 사용자가 없습니다 :("
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:listData="@{viewModel.searchUserList}"/>
+
+    </LinearLayout>
+</layout>

@@ -8,11 +8,17 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.presentation.views.ListFragment"
-        android:label="@string/list_label"
+        android:label="@string/home_label"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_repositoryFragment"
+            app:destination="@id/repositoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -23,6 +29,20 @@
             android:name="login"
             app:argType="string"/>
     </fragment>
+    <fragment
+        android:id="@+id/repositoryFragment"
+        android:name="com.example.presentation.views.RepositoryFragment"
+        android:label="@string/repository_label" >
+        <argument
+            android:name="repository"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.presentation.views.UserFragment"
+        android:label="User">
+        <argument
+            android:name="login"
+            app:argType="string"/>
+    </fragment>
 </navigation>
-
-<!--home, list, form-->

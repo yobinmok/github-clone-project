@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.example.domain.model.User" />
+            type="com.example.domain.model.SearchUser" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +16,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/userList_img"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:layout_margin="5dp"
@@ -24,45 +24,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <!--  정렬 및 텍스트 설정  -->
         <TextView
-            android:id="@+id/id_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="@string/id_label"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="@{item.id}"
-            app:layout_constraintStart_toEndOf="@+id/id_label"
-            app:layout_constraintTop_toTopOf="@+id/id_label" />
-
-        <TextView
-            android:id="@+id/login_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/login_label"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/id" />
-
-        <TextView
-            android:id="@+id/login"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:text="@{item.login}"
-            app:layout_constraintStart_toEndOf="@+id/login_label"
-            app:layout_constraintTop_toBottomOf="@+id/id" />
+            app:layout_constraintStart_toEndOf="@+id/userList_img"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
