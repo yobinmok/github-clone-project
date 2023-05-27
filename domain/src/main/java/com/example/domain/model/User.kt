@@ -7,5 +7,9 @@ class User (
     val name: String?,
     val followers: String,
     val following: String,
-    val bio: String?
+    val bio: String?,
+    val htmlUrl: String,
+    val company: String?,
+    val email: String?,
+    val location: String?
 )

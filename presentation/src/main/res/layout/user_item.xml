@@ -19,6 +19,7 @@
             android:id="@+id/userList_img"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
+            android:scaleType="fitXY"
             android:layout_margin="5dp"
             app:imgSrc="@{item.avatarUrl}"
             app:layout_constraintStart_toStartOf="parent"

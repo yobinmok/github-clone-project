@@ -20,5 +20,13 @@ data class UserEntity (
     @Json(name = "following")
     val following: String,
     @Json(name="bio")
-    val bio: String?
+    val bio: String?,
+    @Json(name="html_url")
+    val htmlUrl: String,
+    @Json(name="company")
+    val company: String?,
+    @Json(name="email")
+    val email: String?,
+    @Json(name="location")
+    val location: String?
 )

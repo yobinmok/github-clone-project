@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.SearchUser
 import com.example.presentation.databinding.UserItemBinding
 
-class RecyclerViewAdapter constructor (val clickListener: (String) -> Unit)
-    : ListAdapter<SearchUser, RecyclerViewAdapter.ViewHolder>(DiffUtil){
+class UserListAdapter constructor (val clickListener: (String) -> Unit)
+    : ListAdapter<SearchUser, UserListAdapter.ViewHolder>(DiffUtil){
 
     class ViewHolder(private var itemBinding: UserItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(searchUser: SearchUser){

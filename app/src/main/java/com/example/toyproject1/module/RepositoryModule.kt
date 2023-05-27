@@ -1,6 +1,8 @@
 package com.example.toyproject1.module
 
+import com.example.data.repository.RepoRepositoryImpl
 import com.example.data.repository.UserRepositoryImpl
+import com.example.domain.repository.RepoRepository
 import com.example.domain.repository.UserRepository
 import dagger.Binds
 import dagger.hilt.*
@@ -15,5 +17,9 @@ abstract class RepositoryModule {
 
     @Singleton // Hilt로 제공하는 컴포넌트가 Application 범위까지 존재함
     @Binds
-    abstract fun bindRepository(repositoryImpl: UserRepositoryImpl): UserRepository
+    abstract fun bindUserRepository(repositoryImpl: UserRepositoryImpl): UserRepository
+
+    @Singleton // Hilt로 제공하는 컴포넌트가 Application 범위까지 존재함
+    @Binds
+    abstract fun bindRepoRepository(repositoryImpl: RepoRepositoryImpl): RepoRepository
 }

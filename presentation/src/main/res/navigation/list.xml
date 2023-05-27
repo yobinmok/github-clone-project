@@ -11,9 +11,6 @@
         android:label="@string/home_label"
         tools:layout="@layout/fragment_list" >
         <action
-            android:id="@+id/action_listFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
             android:id="@+id/action_listFragment_to_userFragment"
             app:destination="@id/userFragment" />
         <action
@@ -36,6 +33,9 @@
         <argument
             android:name="repository"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_repositoryFragment_to_repoDetailFragment"
+            app:destination="@id/repoDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"
@@ -43,6 +43,17 @@
         android:label="User">
         <argument
             android:name="login"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_userFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/repoDetailFragment"
+        android:name="com.example.presentation.views.RepoDetailFragment"
+        android:label="RepoDetailFragment">
+        <argument
+            android:name="repository"
             app:argType="string"/>
     </fragment>
 </navigation>

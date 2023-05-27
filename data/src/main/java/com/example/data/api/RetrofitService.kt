@@ -2,6 +2,7 @@ package com.example.data.api
 
 import com.example.data.model.SearchUserEntity
 import com.example.data.model.RepositoryEntity
+import com.example.data.model.SearchRepoEntity
 import com.example.data.model.SearchUserListEntity
 import com.example.data.model.UserEntity
 import retrofit2.Call
@@ -25,7 +26,7 @@ interface RetrofitService {
 
     // 리포지터리 검색
     @GET("/search/repositories")
-    fun requestRepoList(@Query("q") repository: String): Call<RepositoryEntity>//Call<List<RepositoryEntity>>
+    fun requestRepoList(@Query("q") repository: String): Call<SearchRepoEntity>//Call<List<RepositoryEntity>>
     // 리포지터리 세부정보(?)
     @GET("/repo/{repoName}") // 딱 그 이름을 가진 리포지터리 -> 세부정보에 다른 데이터를 출력할 때
     fun requestRepo(@Path("repoName") repo: String): Call<RepositoryEntity>

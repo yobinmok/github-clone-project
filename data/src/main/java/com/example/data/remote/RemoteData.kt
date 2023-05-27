@@ -1,9 +1,8 @@
 package com.example.data.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.example.data.api.RetrofitService
-import com.example.data.mapperToDomain
+import com.example.data.userListMapperToDomain
 import com.example.data.model.RepositoryEntity
 import com.example.data.model.SearchUserEntity
 import com.example.data.model.SearchUserListEntity
@@ -40,7 +39,7 @@ class RemoteData @Inject constructor(private val retrofitService: RetrofitServic
             }
         })
         items.map {
-            mapperToDomain(it)
+            userListMapperToDomain(it)
         }
         emit(items)
     }

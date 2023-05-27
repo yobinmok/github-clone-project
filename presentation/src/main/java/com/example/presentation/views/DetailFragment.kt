@@ -1,5 +1,6 @@
 package com.example.presentation.views
 
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.presentation.viewModel.UserViewModel
@@ -15,7 +16,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, UserViewModel>(R.layo
 
     override fun initViewCreated() {
         val args: DetailFragmentArgs by navArgs()
-        viewModel.requestData(args.login)
+        viewModel.requestUser(args.login)
         binding.viewModel = viewModel
     }
 }

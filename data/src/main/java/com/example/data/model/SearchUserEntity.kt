@@ -1,12 +1,10 @@
 package com.example.data.model
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
-import java.util.Objects
 
 data class SearchUserListEntity (
     @Json(name = "total_count")
-    val total_count: String,
+    val total_count: Int,
     @Json(name = "items")
     val items: List<SearchUserEntity>
 )

@@ -2,11 +2,10 @@ package com.example.presentation.views
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.presentation.R
-import com.example.presentation.RecyclerViewAdapter
 import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentListBinding
 import com.example.presentation.viewModel.UserViewModel
@@ -21,24 +20,24 @@ class ListFragment : BaseFragment<FragmentListBinding, UserViewModel>(R.layout.f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = RecyclerViewAdapter { login ->
-            val action = ListFragmentDirections.actionListFragmentToDetailFragment(login)
-            findNavController().navigate(action)
-        }
-
-        binding.apply {
-            viewModel = this@ListFragment.viewModel
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
-        }
+        binding.viewModel = this@ListFragment.viewModel
     }
     override fun initViewCreated() {
         binding.userButton.setOnClickListener{
-            val action = ListFragmentDirections.actionListFragmentToUserFragment(binding.search.text.toString())
-            findNavController().navigate(action)
+            if(binding.search.text == null){
+                Toast.makeText(requireContext(), "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            }else{
+                val action = ListFragmentDirections.actionListFragmentToUserFragment(binding.search.text.toString())
+                findNavController().navigate(action)
+            }
         }
         binding.repoButton.setOnClickListener{
-            findNavController().navigate(R.id.action_listFragment_to_repositoryFragment)
+            if(binding.search.text == null){
+                Toast.makeText(requireContext(), "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            }else{
+                val action = ListFragmentDirections.actionListFragmentToRepositoryFragment(binding.search.text.toString())
+                findNavController().navigate(action)
+            }
         }
     }
 }

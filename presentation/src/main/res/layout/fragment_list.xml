@@ -44,12 +44,13 @@
                 android:text="Repository"/>
         </LinearLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:listData="@{viewModel.searchUserList}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="검색어를 입력한 후,\n 원하는 카테고리 버튼을 눌러주세요 :)"
+            android:gravity="center"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </layout>

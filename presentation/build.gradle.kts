@@ -80,4 +80,6 @@ dependencies {
 
     // lottie
     implementation(libs.lottie)
+
+    implementation(libs.circleimageview)
 }

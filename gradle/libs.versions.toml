@@ -37,6 +37,7 @@ viewmodel = "2.6.0"
 glide = "4.15.1"
 coroutine = "1.6.4"
 lottie = "6.0.0"
+circleimageview = "3.1.0"
 
 [plugins]
 # Project Dependency
@@ -88,7 +89,7 @@ coroutine-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutine
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
 androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidxhiltcompiler"}
-
+circleimageview = {module = "de.hdodenhof:circleimageview", version.ref = "circleimageview"}
 lottie = {module = "com.airbnb.android:lottie", version.ref = "lottie"}
 [bundles]
 navigation = ["navigation-fragment", "navigation-ui"]

@@ -1,11 +1,12 @@
 package com.example.presentation.views
 
+import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.presentation.R
-import com.example.presentation.RecyclerViewAdapter
+import com.example.presentation.UserListAdapter
 import com.example.presentation.base.BaseFragment
 import com.example.presentation.databinding.FragmentUserBinding
 import com.example.presentation.viewModel.UserViewModel
@@ -15,8 +16,9 @@ class UserFragment: BaseFragment<FragmentUserBinding, UserViewModel>(R.layout.fr
     override val viewModel: UserViewModel by activityViewModels()
 
     override fun initViewCreated() {
-        val adapter = RecyclerViewAdapter { login ->
-            val action = ListFragmentDirections.actionListFragmentToDetailFragment(login)
+        val adapter = UserListAdapter { login ->
+            val action = UserFragmentDirections.actionUserFragmentToDetailFragment(login)
+            Log.d("UserFragment", login)
             findNavController().navigate(action)
         }
 
@@ -28,5 +30,10 @@ class UserFragment: BaseFragment<FragmentUserBinding, UserViewModel>(R.layout.fr
 
         val args: UserFragmentArgs by navArgs()
         viewModel.requestUserList(args.login)
+        viewModel.requestUser(args.login)
+        binding.user.setOnClickListener {
+            val action = UserFragmentDirections.actionUserFragmentToDetailFragment(args.login)
+            findNavController().navigate(action)
+        }
     }
 }

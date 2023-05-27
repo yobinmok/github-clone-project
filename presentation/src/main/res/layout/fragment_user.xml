@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.example.presentation.viewModel.UserViewModel" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="검색어와 정확히 일치하는 사용자입니다."
-
-            android:layout_marginBottom="@dimen/user_gap"/>
+            android:layout_marginBottom="@dimen/user_gap"
+            android:visibility="@{viewModel.userValid ? View.VISIBLE : View.GONE}"
+            android:text="검색어와 정확히 일치하는 사용자입니다." />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/user_gap"
             android:background="@drawable/border_list"
+            android:visibility="@{viewModel.userValid ? View.VISIBLE : View.GONE}"
             android:padding="12dp">
 
             <ImageView
@@ -32,62 +38,70 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@color/bottom"
+                android:contentDescription="profile Image"
+                app:imgSrc="@{viewModel.searchUser.avatarUrl}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="profile Image" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                app:layout_constraintStart_toEndOf="@+id/user_img"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{viewModel.searchUser.name}"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="Mok Yobin"/>
+                app:layout_constraintStart_toEndOf="@+id/user_img"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/user_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="13dp"
                 android:src="@drawable/ic_star"
-                android:text="yobinmok"
+                android:text="@{viewModel.searchUser.login}"
+                app:layout_constraintBottom_toBottomOf="@+id/user_name"
                 app:layout_constraintStart_toEndOf="@+id/user_name"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="@+id/user_name" />
 
             <TextView
                 android:id="@+id/user_bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
-                android:text="Software developer"
+                android:layout_marginTop="5dp"
+                android:text="@{viewModel.searchUser.bio}"
                 app:layout_constraintStart_toEndOf="@+id/user_img"
-                app:layout_constraintTop_toBottomOf="@+id/user_name"/>
+                app:layout_constraintTop_toBottomOf="@+id/user_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/user_alert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_alert_label"
-
-            android:layout_marginBottom="@dimen/user_gap"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="검색어와 일치하는 사용자가 없습니다 :("
-            android:visibility="gone"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/userRecyclerView"
+            android:gravity="center_vertical"
+            android:visibility="@{viewModel.userValid ? View.GONE : View.VISIBLE}" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:listData="@{viewModel.searchUserList}"/>
+            android:visibility="@{viewModel.userListValid ? View.VISIBLE : View.GONE}"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/user_alert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/user_gap"
+                android:text="@string/user_alert_label" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:userListData="@{viewModel.searchUserList}" />
+        </LinearLayout>
+
 
     </LinearLayout>
 </layout>

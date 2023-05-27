@@ -7,7 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.data.model.RepositoryEntity
 import com.example.data.model.UserEntity
 
-@Database(entities =  [UserEntity::class, RepositoryEntity::class], version = 1, exportSchema = false)
+//@Database(entities =  [UserEntity::class, RepositoryEntity::class], version = 1, exportSchema = false)
+//abstract class GithubDatabase: RoomDatabase() {
+@Database(entities =  [UserEntity::class], version = 1, exportSchema = false)
 abstract class GithubDatabase: RoomDatabase() {
     abstract fun roomDao(): RoomDao
 }
