@@ -10,10 +10,10 @@ data class SearchUserListEntity (
 )
 
 data class SearchUserEntity (
+    @Json(name = "login")
+    val login: String,
     @Json(name = "id")
     val id: String,
     @Json(name = "avatar_url")
-    val avatarUrl: String,
-    @Json(name = "login")
-    val login: String
+    val avatarUrl: String
 )

@@ -10,5 +10,16 @@
         android:name="com.example.presentation.views.LikedFragment"
         android:label="@string/liked_label"
         tools:layout="@layout/fragment_liked" >
+        <action
+            android:id="@+id/action_likedFragment_to_repoDetailFragment2"
+            app:destination="@id/repoDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/repoDetailFragment2"
+        android:name="com.example.presentation.views.RepoDetailFragment"
+        android:label="RepoDetailFragment">
+        <argument
+            android:name="repository"
+            app:argType="com.example.domain.model.Repository"/>
     </fragment>
 </navigation>

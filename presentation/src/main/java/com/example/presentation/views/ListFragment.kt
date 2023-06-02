@@ -24,7 +24,7 @@ class ListFragment : BaseFragment<FragmentListBinding, UserViewModel>(R.layout.f
     }
     override fun initViewCreated() {
         binding.userButton.setOnClickListener{
-            if(binding.search.text == null){
+            if(binding.search.text.toString() == ""){
                 Toast.makeText(requireContext(), "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }else{
                 val action = ListFragmentDirections.actionListFragmentToUserFragment(binding.search.text.toString())
@@ -32,7 +32,7 @@ class ListFragment : BaseFragment<FragmentListBinding, UserViewModel>(R.layout.f
             }
         }
         binding.repoButton.setOnClickListener{
-            if(binding.search.text == null){
+            if(binding.search.text.toString() == ""){
                 Toast.makeText(requireContext(), "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }else{
                 val action = ListFragmentDirections.actionListFragmentToRepositoryFragment(binding.search.text.toString())

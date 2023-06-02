@@ -51,9 +51,9 @@
     <fragment
         android:id="@+id/repoDetailFragment"
         android:name="com.example.presentation.views.RepoDetailFragment"
-        android:label="RepoDetailFragment">
+        android:label="Detail">
         <argument
             android:name="repository"
-            app:argType="string"/>
+            app:argType="com.example.domain.model.Repository"/>
     </fragment>
 </navigation>

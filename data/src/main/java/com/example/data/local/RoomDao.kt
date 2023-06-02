@@ -7,25 +7,28 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.data.model.RepositoryEntity
 import com.example.data.model.UserEntity
+import com.example.domain.model.Repository
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RoomDao {
-// Room 작업은 main thread 에서 진행하면 오류가 발생한다.
-// 꼭 suspend 함수로 선언해 코루틴 내에서 실행하기!
-
     // 리포지터리
-//    @Query("SELECT * FROM RepositoryEntity")
-//    suspend fun getAllRepository(): RepositoryEntity
-//    @Insert(onConflict =  OnConflictStrategy.IGNORE)
-//    suspend fun insertRepository()
-//    @Delete
-//    suspend fun deleteRepository()
+    @Query("SELECT * FROM RepositoryEntity")
+    suspend fun getAllRepository(): List<RepositoryEntity>
+
+    @Query("SELECT * FROM RepositoryEntity WHERE :id = id")
+    suspend fun getLikedRepository(id: Int): RepositoryEntity?
+
+    @Insert(onConflict =  OnConflictStrategy.IGNORE)
+    suspend fun insertRepository(repo: RepositoryEntity)
+    @Delete
+    suspend fun deleteRepository(repo: RepositoryEntity)
 //
 //    // 사용자
     @Query("SELECT * FROM UserEntity")
     suspend fun getMyInfo(): UserEntity
-//    @Insert(onConflict =  OnConflictStrategy.IGNORE)
-//    suspend fun insertMyInfo()
-//    @Delete
-//    suspend fun deleteMyInfo()
+    @Insert(onConflict =  OnConflictStrategy.IGNORE)
+    suspend fun insertMyInfo(user: UserEntity): Long
+    @Query("DELETE FROM UserEntity")
+    suspend fun deleteMyInfo()
 }

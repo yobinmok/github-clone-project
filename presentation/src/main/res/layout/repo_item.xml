@@ -3,36 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="item"
             type="com.example.domain.model.Repository" />
+        <variable
+            name="liked"
+            type="Boolean" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/border_list"
+        android:layout_margin="5dp"
+        android:background="@drawable/border_item"
+        android:orientation="vertical"
         android:padding="12dp">
 
-        <TextView
-            android:id="@+id/repo_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="@{item.fullName}"/>
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/repo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:maxWidth="270dp"
+                android:text="@{item.fullName}"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/liked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{item.liked ? @drawable/ic_filled_star : @drawable/ic_star}"/>
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="Liked" />
 
         <TextView
             android:id="@+id/repo_description"
@@ -40,47 +51,43 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@{item.description}"
+            android:visibility="@{item.description == null ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/repo_name"/>
 
-        <TextView
-            android:id="@+id/repo_topic"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/repo_topics"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="토픽"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repo_description"/>
+            app:topicListData="@{item.topics}"
+            android:visibility="@{item.topics == null ? View.GONE : View.VISIBLE}"
+            android:layout_marginTop="8dp"/>
 
-        <TextView
-            android:id="@+id/repo_lang"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@{item.language}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repo_topic"/>
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/repo_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:text="@{item.language}"
+                android:visibility="@{item.language == null ? View.GONE : View.VISIBLE}"/>
 
-        <TextView
-            android:id="@+id/repo_star"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:text="@{item.star}"
-            app:layout_constraintStart_toEndOf="@+id/repo_lang"
-            app:layout_constraintTop_toBottomOf="@+id/repo_topic"/>
+            <TextView
+                android:id="@+id/repo_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:text="@{@string/repo_stars(item.star)}"/>
 
-        <TextView
-            android:id="@+id/repo_updated"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:text="@{item.updatedAt}"
-            app:layout_constraintStart_toEndOf="@+id/repo_star"
-            app:layout_constraintTop_toBottomOf="@+id/repo_topic"/>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/repo_updated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.updatedAt}"/>
+        </LinearLayout>
+    </LinearLayout>
 </layout>

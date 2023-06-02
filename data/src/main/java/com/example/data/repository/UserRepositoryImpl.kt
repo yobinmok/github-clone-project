@@ -5,7 +5,6 @@ import com.example.data.api.RetrofitService
 import com.example.data.userListMapperToDomain
 import com.example.data.model.SearchUserListEntity
 import com.example.data.model.UserEntity
-import com.example.data.remote.RemoteData
 import com.example.data.userMapperToDomain
 import com.example.domain.NetworkResult
 import com.example.domain.model.SearchUser
@@ -21,7 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(private val retrofitService: RetrofitService, private val remoteData: RemoteData):
+class UserRepositoryImpl @Inject constructor(private val retrofitService: RetrofitService):
     UserRepository {
 
     private val initResult = NetworkResult.LOADING
@@ -37,7 +36,6 @@ class UserRepositoryImpl @Inject constructor(private val retrofitService: Retrof
             override fun onResponse(call: Call<UserEntity>, response: Response<UserEntity>) {
                 if(response.isSuccessful){
                     Log.d("User Success", response.body().toString())
-                    //UserEntity(id=1298141, avatarUrl=https://avatars.githubusercontent.com/u/1298141?v=4, login=yobin, name=yobin, followers=10, following=5, bio=null)
                     val item = userMapperToDomain(response.body()!!)
                     _userResult.value = NetworkResult.SUCCESS
                     trySend(item)

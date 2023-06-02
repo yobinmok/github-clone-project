@@ -12,5 +12,4 @@ interface RepoRepository {
     val repoResult: StateFlow<NetworkResult>
     val repoListResult: StateFlow<NetworkResult>
     fun requestRepoList(reponame: String): Flow<List<Repository>>
-    fun requestRepo(reponame: String): Flow<Repository>
 }

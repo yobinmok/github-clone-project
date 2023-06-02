@@ -7,6 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.presentation.R
@@ -26,8 +27,9 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHost
         navController = navHost.navController
 
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.listFragment, R.id.likedFragment, R.id.myinfoFragment))
         binding.bottomNavigation.setupWithNavController(navController)
-        setupActionBarWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {

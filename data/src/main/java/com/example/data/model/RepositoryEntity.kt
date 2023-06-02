@@ -2,11 +2,13 @@ package com.example.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.domain.model.SearchUser
 import com.squareup.moshi.Json
+import java.util.Date
 
-//@Entity
+@Entity
 data class RepositoryEntity (
-//    @PrimaryKey
+    @PrimaryKey
     @Json(name = "id")
     val id: Int,
     @Json(name = "name")
@@ -14,7 +16,7 @@ data class RepositoryEntity (
     @Json(name = "full_name")
     val fullName: String,
     @Json(name = "owner")
-    val owner: RepoOwner,
+    val owner: SearchUserEntity,
     @Json(name = "description")
     val description: String?,
     @Json(name = "html_url")
@@ -26,10 +28,7 @@ data class RepositoryEntity (
     @Json(name="stargazers_count")
     val star: String,
     @Json(name="language")
-    val language: String?
-)
-
-data class RepoOwner(
-    @Json(name = "login")
-    val login: String
+    val language: String?,
+    @Json(name="forks_count")
+    val forkCount: String?
 )

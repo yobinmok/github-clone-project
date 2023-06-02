@@ -12,4 +12,15 @@
     <string name="user_alert_label">혹시 다른 사용자를 찾고 계신가요?</string>
     <string name="followers_label">followers</string>
     <string name="following_label">following</string>
+    <string name="language_label">주요 언어</string>
+    <string name="repo_stars">stars  %s</string>
+    <string name="update_label">Updated at %s</string>
+    <string name="stars_label">stars</string>
+    <string name="forks_label">forks</string>
+    <string name="topic_label">토픽</string>
+    <string name="loading">Loading...</string>
+    <string name="info_id_label">자신의 깃허브 계정이 보고 싶다면 아이디를 입력하세요.</string>
+    <string name="id_hint_label">ID</string>
+    <string name="myinfo_update">다른 계정 불러오기</string>
+    <string name="myinfo_delete">내 정보 삭제하기</string>
 </resources>

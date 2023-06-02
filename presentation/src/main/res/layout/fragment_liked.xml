@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
-    <FrameLayout
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.presentation.viewModel.RepositoryViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.LikedFragment">
+        android:orientation="vertical"
+        android:background="@color/view_background"
+        android:gravity="center"
+        android:padding="10dp">
 
         <TextView
+            android:id="@+id/loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/liked_label"
-            android:layout_gravity="center"/>
-    </FrameLayout>
+            android:text="@string/loading"
+            app:emptyMsg = "@{viewModel.emptyMessage}"
+            app:resultStatus="@{viewModel.likedRepoResult}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/repoRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:repoListData="@{viewModel.likedRepoList}"
+            app:resultStatus="@{viewModel.likedRepoResult}"/>
+
+    </LinearLayout>
 </layout>

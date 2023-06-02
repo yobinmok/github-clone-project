@@ -9,7 +9,6 @@ import javax.inject.Inject
 class GetUserUseCase @Inject constructor (private val repository: UserRepository) {
 
     val userResult = repository.userResult
-
     fun execute(login: String): Flow<User> {
         return repository.requestUser(login)
     }

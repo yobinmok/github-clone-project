@@ -15,135 +15,154 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/view_background"
         android:orientation="vertical"
         android:padding="15dp"
         tools:context=".views.DetailFragment">
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+        <TextView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            app:imgSrc="@{viewModel.searchUser.avatarUrl}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/name"
-            style="@style/detailTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.searchUser.name}"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:visibility="@{viewModel.searchUser.name == null ? View.GONE : View.VISIBLE}" />
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:text="@{viewModel.searchUser.login}"
-            app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <TextView
-            android:id="@+id/bio"
-            style="@style/detailTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.searchUser.bio}"
-            android:visibility="@{viewModel.searchUser.bio == null ? View.GONE : View.VISIBLE}"
-            app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="20dp"
-            android:background="#d4d4d4" />
-
-        <TextView
-            android:id="@+id/htmlUrl"
-            style="@style/detailTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.searchUser.htmlUrl}"
-            app:drawableStartCompat="@drawable/ic_link" />
-
-        <TextView
-            android:id="@+id/company"
-            style="@style/detailTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.searchUser.company}"
-            android:visibility="@{viewModel.searchUser.company == null ? View.GONE : View.VISIBLE}"
-            app:drawableStartCompat="@drawable/ic_business" />
-
-        <TextView
-            android:id="@+id/location"
-            style="@style/detailTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.searchUser.location}"
-            android:visibility="@{viewModel.searchUser.location == null ? View.GONE : View.VISIBLE}"
-            app:drawableStartCompat="@drawable/ic_location" />
-
-        <TextView
-            android:id="@+id/email"
-            style="@style/detailTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.searchUser.email}"
-            android:visibility="@{viewModel.searchUser.email == null ? View.GONE : View.VISIBLE}"
-            app:drawableStartCompat="@drawable/ic_mail" />
+            android:text="@string/loading"
+            app:resultStatus="@{viewModel.userResult}" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_corner"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:resultStatus="@{viewModel.userResult}">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                app:imgSrc="@{viewModel.searchUser.avatarUrl}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/name"
                 style="@style/detailTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/followers_label"
-                app:drawableStartCompat="@drawable/ic_filled_person" />
+                android:text="@{viewModel.searchUser.name}"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.searchUser.name == null ? View.GONE : View.VISIBLE}" />
 
             <TextView
-                android:id="@+id/follower"
-                style="@style/detailTheme"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.searchUser.followers}"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
+                android:text="@{viewModel.searchUser.login}"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <TextView
+                android:id="@+id/bio"
+                style="@style/detailTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.searchUser.bio}"
+                android:visibility="@{viewModel.searchUser.bio == null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
                 android:background="#d4d4d4" />
 
             <TextView
+                android:id="@+id/htmlUrl"
                 style="@style/detailTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/following_label" />
+                android:autoLink="web"
+                android:text="@{viewModel.searchUser.htmlUrl}"
+                app:drawableStartCompat="@drawable/ic_link" />
 
             <TextView
-                android:id="@+id/following"
+                android:id="@+id/company"
                 style="@style/detailTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.searchUser.following}"
-                android:textStyle="bold" />
+                android:text="@{viewModel.searchUser.company}"
+                android:visibility="@{viewModel.searchUser.company == null ? View.GONE : View.VISIBLE}"
+                app:drawableStartCompat="@drawable/ic_business" />
+
+            <TextView
+                android:id="@+id/location"
+                style="@style/detailTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.searchUser.location}"
+                android:visibility="@{viewModel.searchUser.location == null ? View.GONE : View.VISIBLE}"
+                app:drawableStartCompat="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/email"
+                style="@style/detailTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.searchUser.email}"
+                android:visibility="@{viewModel.searchUser.email == null ? View.GONE : View.VISIBLE}"
+                app:drawableStartCompat="@drawable/ic_mail" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/detailTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followers_label"
+                    app:drawableStartCompat="@drawable/ic_filled_person" />
+
+                <TextView
+                    android:id="@+id/follower"
+                    style="@style/detailTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.searchUser.followers}"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#d4d4d4" />
+
+                <TextView
+                    style="@style/detailTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/following_label" />
+
+                <TextView
+                    android:id="@+id/following"
+                    style="@style/detailTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.searchUser.following}"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 </layout>

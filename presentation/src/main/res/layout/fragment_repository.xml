@@ -13,13 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/view_background"
         android:padding="10dp">
+
+        <TextView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+            app:resultStatus="@{viewModel.repoResult}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/repoRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:repoListData="@{viewModel.repoList}"/>
+            android:layout_height="match_parent"
+            app:repoListData="@{viewModel.repoList}"
+            app:resultStatus="@{viewModel.repoResult}"/>
 
     </LinearLayout>
 </layout>

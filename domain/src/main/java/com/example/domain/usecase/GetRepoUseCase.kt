@@ -8,8 +8,7 @@ import javax.inject.Inject
 class GetRepoUseCase @Inject constructor(private val repository: RepoRepository) {
 
     val repoListRequest = repository.repoListResult
-
-    fun execute(reponame: String): Flow<List<Repository>> {
-        return repository.requestRepoList(reponame)
+    fun execute(repoName: String): Flow<List<Repository>> {
+        return repository.requestRepoList(repoName)
     }
 }
