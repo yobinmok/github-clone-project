@@ -1,4 +1,4 @@
-# github-clone-project
+# github-project
 
 🛠️ 기술 스택
 - 아키텍처: 클린 아키텍처 및 MVVM
