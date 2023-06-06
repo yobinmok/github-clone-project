@@ -22,4 +22,6 @@
 2. Github 리포지터리 검색 기능
 3. 리포지터리 찜하기 기능
 4. 내 정보
+
+
 ![git](https://github.com/yobinmok/gift-room/assets/90735948/0c8bfc02-ba34-490b-b7b9-9f28ea52351a)
